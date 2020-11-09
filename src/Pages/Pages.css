@@ -1,0 +1,22 @@
+.page {
+    padding-left: 20%;
+    padding-right: 20%;
+    
+}
+header {
+    margin: auto;
+    font-size: 24px;
+  }
+  
+  section {
+    font-size: 18px;
+    background-color: #bbb;
+  }
+  
+  section:nth-child(even) {
+    background-color: #ddd;
+  }
+  
+  p {
+    margin: 0 auto;
+  }
