@@ -9,7 +9,7 @@ function Navbar() {
         <a href="index.html">Home |</a>
         <a href="dailyform.html">New Entry |</a>
         <a href="/NewJournalEntry">Journal Entry |</a>
-        <a href="alljournalview.html">My Journal |</a>
+        <a href="/AllJournalEntries">My Journal |</a>
         <a href="/Login">Login</a>
         
     </nav>

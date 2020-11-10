@@ -5,6 +5,7 @@ import Footer from './Page Components/Footer';
 import Home from './Pages/Home';
 import LoginForm from './Forms/LoginForm';
 import NewJournalEntry from './Journal/NewJournalEntry';
+import AllJournalEntries from './Journal/AllJournalEntries';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Route exact path= '/' component= {Home} />
     <Route path= '/Login' component= {LoginForm} />
     <Route path= '/NewJournalEntry' component = {NewJournalEntry} />
+    <Route path= '/AllJournalEntries' component= {AllJournalEntries} />
     <Footer />
     </div>
   );

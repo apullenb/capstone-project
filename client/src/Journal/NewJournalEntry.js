@@ -21,7 +21,7 @@ function NewJournalEntry () {
                     <input type="text" placeholder="I am feeling...!" />
                 </label> </p>
                 <label> <p>Journal Entry Content:</p>
-                    <input type="textarea" placeholder="Here is what happened today!..." />
+                    <input type="textarea" placeholder="This is what happened today!..." />
                 </label>
                 <p><button>Submit</button></p>
             </form>
