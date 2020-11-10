@@ -1,23 +1,21 @@
 /* eslint-disable semi */
-const express = require('express');
-const morgan = require('morgan');
+// const express = require('express');
+const app = require('./services/routes')
+const knex = require('knex');
+const { PORT, DB_URL } = require('./config')
 
-const app = express();
-const entries = require('./client/src/Journal/JournalStore.js')
-app.use(morgan('dev'));
 
-app.get('/entries', (req, res) => {
-  res
-    .json(entries)
-})
-app.use((req, res) => {
-  res.send('Hello, world!')
+
+const db = knex({
+  client: 'pg',
+  connection: DB_URL,
 });
+app.set('db', db)
 
 
-const PORT = 8000
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`)
 })
+
 

@@ -5,12 +5,12 @@ date TIMESTAMPTZ DEFAULT now() NOT NULL,
  title   text NOT NULL,
  content text NOT NULL,
  mood    text NOT NULL,
- User id integer NOT NULL,
- CONSTRAINT "FK_38" FOREIGN KEY ( "User id" ) REFERENCES "Users" ( "User id" )
+ user_id integer NOT NULL,
+ CONSTRAINT "FK_38" FOREIGN KEY ( "user_id" ) REFERENCES "users" ( "user_id" )
 );
 
-CREATE INDEX "fkIdx_38" ON "Journal Entry"
+CREATE INDEX "fkIdx_38" ON "journal_entry"
 (
- "User id"
+ "user_id"
 );
 
