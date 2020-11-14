@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginForm from '../Forms/LoginForm';
 import './Pages.css'
 
 
@@ -38,6 +39,9 @@ function Home() {
             <h3>Start Feeling Great Now!</h3>
         </header>
         </section>
+        <article>
+        <section className="left">
+        <h5>Create An Account:</h5>
         <form className="register">
         <label> Username: 
              <p><input type= "text" />
@@ -50,6 +54,13 @@ function Home() {
         </p> </label>      
         <button>Submit</button>
         </form>
+        </section>
+        <section className="right">
+          <h5>Already Have An Account?</h5>
+          Login:
+          <LoginForm />
+        </section>
+        </article>
       </div>
   );
   }

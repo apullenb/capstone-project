@@ -12,7 +12,21 @@ header {
     font-size: 18px;
     background-color: #bbb;
   }
-  
+    
+    article {
+    display: flex;
+    flex-direction: row;
+    align-content: center ;
+  }
+  .right {
+    width: 50%;
+    background-color: rgb(143, 142, 142);
+
+  }
+  .left{
+    width: 50%;
+    background-color: #DDD;
+  }
   section:nth-child(even) {
     background-color: #ddd;
   }

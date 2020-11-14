@@ -1,6 +1,6 @@
 /* eslint-disable semi */
 // const express = require('express');
-const app = require('./services/routes')
+const app = require('./app')
 const knex = require('knex');
 const { PORT, DB_URL } = require('./config')
 

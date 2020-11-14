@@ -20,13 +20,16 @@
   },
   "homepage": "https://github.com/apullenb/capstone-project#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.12",
     "morgan": "^1.10.0",
     "pg": "^8.5.0",
+    "react-use-localstorage": "^3.5.3",
     "xss": "^1.0.8"
   },
   "devDependencies": {
