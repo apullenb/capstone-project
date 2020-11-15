@@ -11,6 +11,7 @@ const actRouter = require('./Services/ActivityServices/actroutes');
 const journalRouter = require('./Services/JournalServices/routes');
 const app = express();
 
+
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
@@ -22,6 +23,7 @@ app.use(cors());
 
 app.use(express.json());
 
+app.use('/dashboard', require('./Services/routes/dashboard'));
 app.use('/api/activity', actRouter);
 app.use('/api/users', userRouter);
 app.use('/api/journal', journalRouter);

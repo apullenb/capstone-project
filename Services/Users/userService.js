@@ -27,7 +27,7 @@ const Services= {
     return knex
       .from('users')
       .select('*')
-      .where('id', id)
+      .where('user_id', id)
       .first();
   },
 

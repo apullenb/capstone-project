@@ -73,9 +73,10 @@ userRouter
   });
 
 userRouter
-.get('/isVerified', authorization, async (req, res) => {
-    try{
-        res.json(true)
+.get('/isverified', authorization, async (req, res) => {
+    try {
+      console.log('made it here')
+       return res.json(true);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')

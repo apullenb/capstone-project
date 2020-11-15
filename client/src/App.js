@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import { Route } from 'react-router-dom'
+import React, {useContext, Fragment, useState} from 'react';
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import Header from './Page Components/Header';
 import Footer from './Page Components/Footer';
 import Home from './Pages/Home';
@@ -8,25 +8,46 @@ import NewJournalEntry from './Journal/NewJournalEntry';
 import AllJournalEntries from './Journal/AllJournalEntries';
 import AllEntryView from './DailyLog/AllEntryView';
 import useLocalStorage from 'react-use-localstorage'
+import Dashboard from './Pages/Dashboard';
+import Register from './Forms/Register';
 
 
 
- export const UserLoginContext = React.createContext()
+ 
 function App() {
-  const [login, setLogin] = useLocalStorage("login");
-  const loggedIn = {login: login, setLogin: setLogin}
+
+  const [isAuthenticated, setIsAuthenticated] =useState(false)
+
+  const setAuth = (boolean) => {
+    setIsAuthenticated(boolean)
+  }
+
   return (
+    <Fragment>
+      <Router>
     <div className="App">
     <Header />
-    <UserLoginContext.Provider value= {loggedIn}>
+    <Switch>
+      <Route exact path='/login' render= {props =>
+       !isAuthenticated ? ( <LoginForm {...props} setAuth={setAuth} />) : ( <Redirect to='/dashboard' /> )} />
+      <Route exact path='/register' render= {props => 
+       !isAuthenticated ? ( <Register {...props} setAuth={setAuth} />) : (  <Redirect to='/login' /> )}  />
+      <Route exact path='/dashboard' render= {props => 
+       isAuthenticated ? (<Dashboard {...props} setAuth={setAuth} /> ): (  <Redirect to='/login' /> )} />
+      </Switch>
+
+    
+    
     <Route exact path= '/' component= {Home} />
-    <Route path= '/Login' component= {LoginForm} />
     <Route path= '/NewJournalEntry' component = {NewJournalEntry} />
     <Route path= '/AllJournalEntries' component= {AllJournalEntries} />
     <Route path= '/AllEntryView' component= {AllEntryView} />
-    </UserLoginContext.Provider>
-    <p><Footer /></p>
+    
+    <Footer />
+    
     </div>
+    </Router>
+    </Fragment>
   );
 }
 

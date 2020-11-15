@@ -10,7 +10,7 @@ class AllJournalEntries extends Component {
                 }
               }
     componentDidMount() {
-      fetch('http://localhost:8000/journal-entries',{ method: 'GET'})
+      fetch('http://localhost:8000/api/journal',{ method: 'GET'})
       .then(res => res.json())
       .then(entries => {
         this.setState({ Journal: entries         

@@ -1,29 +1,29 @@
-import React, {useContext, useState} from 'react'
-import {UserLoginContext} from '../App'
+import React, {useState} from 'react'
 
 
 
-function LoginForm() {
-  const loggedIn=useContext(UserLoginContext)
+
+function LoginForm(props) {
+  
   
   const [formHandleUser, setformHandleUser] = useState('')
   const [formHandlePass, setformHandlePass] = useState('')
 
 
-  function handleSubmit(){
+    const handleSubmit = async e => { 
+      e.preventDefault();
     const newLogin = {username: formHandleUser, password: formHandlePass} 
     const loginRequest = { method: 'POST', headers: {'content-type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify(newLogin)}
-    fetch('http://localhost:8000/api/users/login', loginRequest)
-    .then(res =>
-      (!res.ok)
-    ? res.json().then(e => Promise.reject(e))
-    : res.json() 
-)
-      loggedIn.setLogin(newLogin)
+    const response = await fetch('http://localhost:8000/api/users/login', loginRequest)
+    
+    const parseRes = await response.json()
+    localStorage.setItem('token', parseRes.token)
+    props.setAuth(true)  
     
   }
     return (
      <div>
+       <h1>Login</h1>
         <label> Username: 
              <p><input type= "text" name="user" value= {formHandleUser} onChange={e=> setformHandleUser(e.target.value)} />
            </p> </label>

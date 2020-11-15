@@ -12,14 +12,15 @@ app.use(cors());
 
 const journalRouter = express.Router();
 //Journal Routes
-app.get('/journal-entries', (req, res, next) => {
-  const knexInstance = req.app.get('db');
-  Services.getAllJournalEntries(knexInstance)
-    .then(entries => {
-      res.json(entries);
-    })
-    .catch(next);
-});
+journalRouter
+  .get('/', (req, res, next) => {
+    const knexInstance = req.app.get('db');
+    Services.getAllJournalEntries(knexInstance)
+      .then(entries => {
+        res.json(entries);
+      })
+      .catch(next);
+  });
 
 app.post('/journal-entries', jsonParser, (req, res, next) =>{
   const {title, content, mood} = req.body;
