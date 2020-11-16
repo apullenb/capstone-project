@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import {toast} from 'react-toastify';
 
 
 
-
-function Register (setAuth) {
+function Register (props) {
     const [inputs, setInputs] = useState({
         username: '',
         password: '',
@@ -22,10 +22,17 @@ function Register (setAuth) {
                 method: "POST", headers: {"Content-Type" : "application/json" }, body: JSON.stringify(body)
             })
             const parseRes = await response.json();
+            if (parseRes.token) {
             localStorage.setItem('token', parseRes.token)
-            setAuth(true)
-        } catch (error) {
-            
+            props.setAuth(true)
+            toast.success('Success! Logging into your new account..')
+            } else {
+                props.setAuth(false)
+                console.log(parseRes)
+                toast.error(parseRes.error)
+            }
+        }catch (err) {
+            console.error(err.message)
         }
     }
 return (

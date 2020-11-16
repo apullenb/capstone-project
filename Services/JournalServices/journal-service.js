@@ -2,8 +2,11 @@
 
 const Services = {
   //Journal Entries
-  getAllJournalEntries(knex) {
-    return knex.select('*').from('journal_entry');
+  getAllJournalEntries(knex, id) {
+    return knex
+      .select('*')
+      .from('journal_entry')
+      .where('user_id', id);
   },
   
   addNewJournalEntry(knex, newEntry){

@@ -4,6 +4,8 @@ const express = require('express');
 const path =require('path')
 const Services = require('./activityservice');
 const xss = require('xss');
+const authorization = require('../../utils/authorization');
+
 
 
 const jsonParser=express.json();
@@ -23,14 +25,20 @@ const serializeActEntry = entry => ({
 });
 
 actRouter
-  .route('/')
-  .get((req, res, next) => {
-    Services.getAllLogEntries(req.app.get('db')) 
-      .then(entries => {
-        res.json(entries.map(serializeActEntry))
-      })
-      .catch(next)
-  })
+.get('/', authorization, async (req, res) => { 
+
+  try {
+      const user = await Services.getById(req.app.get('db'), req.user)
+     
+     res.json(user)
+     console.log(user)
+
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).json('server error');
+      
+  }
+})
   
 actRouter
   .route('/')

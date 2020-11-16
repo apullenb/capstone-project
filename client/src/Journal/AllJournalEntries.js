@@ -10,24 +10,28 @@ class AllJournalEntries extends Component {
                 }
               }
     componentDidMount() {
-      fetch('http://localhost:8000/api/journal',{ method: 'GET'})
+      fetch('http://localhost:8000/api/journal',{ method: 'GET',
+      headers: {token: localStorage.token}
+    })
       .then(res => res.json())
       .then(entries => {
         this.setState({ Journal: entries         
             })
-            console.log(this.state.Journal)
+            
           })
     }
-          
+
+   
     render() {
-       const displayEntries = this.state.Journal.map((entry) => { 
-           return <li key= {entry.id} style= {{listStyle: "none", margin: "10px"} }> <Entry journal={entry} /></li>})
+    
     return (
       <div className="journal-entries">
-          {displayEntries}
+          { this.state.Journal.map((entry) => { 
+      return <div key= {entry.id}> <Entry journal={entry} /></div>}) }
       </div>
+      
     );
-  }
+    }
 }
 
   export default AllJournalEntries;

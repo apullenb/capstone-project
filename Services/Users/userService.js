@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { use } = require('chai');
 
 const Services= {
 
@@ -25,8 +26,8 @@ const Services= {
   },
   getById(knex, id) {
     return knex
-      .from('users')
       .select('*')
+      .from('users')
       .where('user_id', id)
       .first();
   },
@@ -38,7 +39,14 @@ const Services= {
   },
   comparePasswords(password, hash) {
     return bcrypt.compare(password, hash);
+  },
+
+  getUserDash(knex, id) {
+    return knex
+      .select('username')
+      .from('users')
+      .where('user_id', id)
+      .first();
   }
 };
-
 module.exports = Services;

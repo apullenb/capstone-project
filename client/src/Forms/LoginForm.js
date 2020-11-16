@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {toast} from 'react-toastify';
 
 
 
@@ -17,9 +18,14 @@ function LoginForm(props) {
     const response = await fetch('http://localhost:8000/api/users/login', loginRequest)
     
     const parseRes = await response.json()
-    localStorage.setItem('token', parseRes.token)
-    props.setAuth(true)  
-    
+    if (parseRes.token) {
+      localStorage.setItem('token', parseRes.token)
+    props.setAuth(true) 
+    toast.success('Logged In Successfully') 
+  } else {
+    props.setAuth(false)
+    toast.error(parseRes.error)
+  }
   }
     return (
      <div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import RatingBox from '../Page Components/RatingBox'
+import LogEntry from './LogEntry'
 
 
 class AllEntryView extends Component {
@@ -10,33 +11,29 @@ class AllEntryView extends Component {
                 }
               }
     componentDidMount() {
-      fetch('http://localhost:8000/daily-activities',{ method: 'GET'})
-      .then(res => res.json())
+      fetch('http://localhost:8000/api/activity',{ method: 'GET',
+      headers: {token: localStorage.token}
+    })
+      .then(res => res.json(''))
       .then(entries => {
         this.setState({ dailyLog: entries         
             })
-            console.log(this.state.dailyLog)
           })
     }
-          
+   
+      
+  
     render() {
-       const displayEntries = this.state.dailyLog.map((entry) => { 
-           return <div><h5 key={entry.id}>{entry.date}</h5>
-                    <h4>Mood on This Day</h4>
-           <ul>
-               <li>Happiness: {entry.rate_happiness}</li>
-               <li>Focus: {entry.rate_focus}</li>
-               <li>Energy: {entry.rate_energy}</li>
-        </ul><button>View This Day</button>
-        <hr></hr>
-        </div>
-        })
-    return (
-      <div className="dailylog-entries">
-          {displayEntries}
-          <RatingBox rating={this.state.dailyLog}/>
+    
+      return (
+        <div className="dailylog-entries">
+          <RatingBox rate={this.state.dailyLog} />
+          {this.state.dailyLog.map((entry) => { 
+        return <div key={entry.id}><LogEntry log= {entry} /></div>})}
+        
       </div>
-    );
+      )
+  
   }
 }
 

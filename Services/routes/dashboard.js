@@ -7,9 +7,10 @@ router
 .get('/', authorization, async (req, res) => { 
 
     try {
-        const user = await service.getById(req.app.get('db'), req.user)
+        const user = await service.getUserDash(req.app.get('db'), req.user)
        
-       res.json(user.user_id)
+       res.json(user)
+       console.log(user)
 
     } catch (err) {
         console.error(err.message);

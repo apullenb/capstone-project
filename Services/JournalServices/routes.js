@@ -1,40 +1,40 @@
 /* eslint-disable eqeqeq */
 const express = require('express');
-const { NODE_ENV } = require('../../config');
-const app = express();
-const morgan = require('morgan');
-const cors = require('cors');
 const Services = require('./journal-service.js');
 const jsonParser=express.json();
+const authorization = require('../../utils/authorization')
 
-app.use(morgan('dev'));
-app.use(cors());
 
 const journalRouter = express.Router();
 //Journal Routes
 journalRouter
-  .get('/', (req, res, next) => {
-    const knexInstance = req.app.get('db');
-    Services.getAllJournalEntries(knexInstance)
-      .then(entries => {
-        res.json(entries);
+.get('/', authorization, async (req, res) => { 
+  try {
+      const user = await Services.getAllJournalEntries(req.app.get('db'), req.user)
+     
+     res.json(user)
+     console.log(user)
+
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).json('server error');
+      
+  }
+})
+journalRouter
+  .post('/journal-entries', jsonParser, (req, res, next) =>{
+    const {title, content, mood} = req.body;
+    const newEntry = {title, content, mood};
+    Services.addNewJournalEntry(req.app.get('db'),
+      newEntry
+    )
+      .then(entry => {
+        res
+          .status(201)
+          .json(entry);
       })
       .catch(next);
   });
-
-app.post('/journal-entries', jsonParser, (req, res, next) =>{
-  const {title, content, mood} = req.body;
-  const newEntry = {title, content, mood};
-  Services.addNewJournalEntry(req.app.get('db'),
-    newEntry
-  )
-    .then(entry => {
-      res
-        .status(201)
-        .json(entry);
-    })
-    .catch(next);
-});
 
 
 

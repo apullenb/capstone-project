@@ -23,8 +23,9 @@ userRouter
       const { username, password} = req.body;
       const newUser = {username, password};
       const users = await Services.checkForUser(req.app.get('db'), newUser.username)
+      console.log(users)
           if (users) {
-              return res.status(401).send('username not available');
+              return res.status(400).json({error: 'username not available'});
           } 
         
     const saltRound = 2
@@ -54,7 +55,7 @@ userRouter
    const searchUsers = await Services.getUserWithUserName(req.app.get('db'), loginUser.username)
       if (searchUsers === undefined) {
           return res.status(400).json({
-            error: 'Incorrect user_name or password',
+            error: 'Incorrect username or password',
           });
         }
     
@@ -62,7 +63,7 @@ userRouter
           .then(compareMatch => {
             if (!compareMatch) {
               return res.status(400).json({
-                error: 'Incorrect user_name or password',
+                error: 'Incorrect username or password',
               })
             }
         

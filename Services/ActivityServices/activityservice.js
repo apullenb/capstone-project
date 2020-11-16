@@ -20,8 +20,7 @@ const ActServices = {
     return knex
       .from('daily_activities')
       .select('*')
-      .where('id', id)
-      .first();
+      .where('user_id', id);
   },
 
 };

@@ -1,5 +1,7 @@
-import React, {useContext, Fragment, useState} from 'react';
+import React, {Component, useContext, Fragment, useState, useEffect} from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import Header from './Page Components/Header';
 import Footer from './Page Components/Footer';
 import Home from './Pages/Home';
@@ -12,7 +14,7 @@ import Dashboard from './Pages/Dashboard';
 import Register from './Forms/Register';
 
 
-
+toast.configure();
  
 function App() {
 
@@ -22,10 +24,29 @@ function App() {
     setIsAuthenticated(boolean)
   }
 
+ async function isAuthCheck() {
+   try {
+    const response = await fetch("http://localhost:8000/api/users/isverified", {
+      method: 'GET',
+      headers: {token: localStorage.token}
+    })
+     
+    const parseRes = await response.json();
+    parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+   } catch (err) {
+     console.error(err.message)
+     
+   }
+ }
+
+  useEffect(()=> {
+    isAuthCheck();
+  })
   return (
     <Fragment>
       <Router>
     <div className="App">
+    
     <Header />
     <Switch>
       <Route exact path='/login' render= {props =>
@@ -34,13 +55,14 @@ function App() {
        !isAuthenticated ? ( <Register {...props} setAuth={setAuth} />) : (  <Redirect to='/login' /> )}  />
       <Route exact path='/dashboard' render= {props => 
        isAuthenticated ? (<Dashboard {...props} setAuth={setAuth} /> ): (  <Redirect to='/login' /> )} />
-      </Switch>
+     </Switch>
 
-    
     
     <Route exact path= '/' component= {Home} />
     <Route path= '/NewJournalEntry' component = {NewJournalEntry} />
+    
     <Route path= '/AllJournalEntries' component= {AllJournalEntries} />
+    
     <Route path= '/AllEntryView' component= {AllEntryView} />
     
     <Footer />

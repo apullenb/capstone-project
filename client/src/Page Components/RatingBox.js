@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment'
 
 
-
-function RatingBox(props) {
-    const elements= props.rating
+function RatingBox({rate}) {
+    const elements= rate
     function bestRating() {
         let rating= 0
         let date = ''
@@ -16,7 +16,8 @@ function RatingBox(props) {
        }     
     } 
     rating = Math.round(rating) 
-    return <div><h4>Your Best day Was:</h4><p>{date}</p><p>With a Mood Rating of {rating}</p></div>
+    const dateFormat = moment(date).format("LL")
+    return <div><h4>Your Best day Was:</h4><p>{dateFormat}</p><p>With a Mood Rating of {rating}</p></div>
 }
     const string = bestRating()
     return (
@@ -27,19 +28,12 @@ function RatingBox(props) {
   }
   
   const ratingBoxStyle = {
-    backgroundColor: "#FFC",
-    padding: "2rem",
+    backgroundColor: "yellow",
+    padding: "10px",
     textAlign: "center",
-    maxWidth: "200px",  
-    position : "relative",
-    zIndex  : "-1",
-    bottom   : "15px",
-    right    : "5px",
-    width    : "50%",
-    top      : "80%",
-    maxWidth: "200px",  
+    maxWidth: "60%",
     boxShadow: "0px 13px 10px black",
-    transform: "rotate(4deg)"
+    transform: "rotate(-3deg)"
   }
   
 
