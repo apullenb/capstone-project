@@ -23,7 +23,6 @@ userRouter
       const { username, password} = req.body;
       const newUser = {username, password};
       const users = await Services.checkForUser(req.app.get('db'), newUser.username)
-      console.log(users)
           if (users) {
               return res.status(400).json({error: 'username not available'});
           } 
@@ -76,13 +75,13 @@ userRouter
 userRouter
 .get('/isverified', authorization, async (req, res) => {
     try {
-      console.log('made it here')
        return res.json(true);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')
-
     }
+   
+
 })
 
   userRouter

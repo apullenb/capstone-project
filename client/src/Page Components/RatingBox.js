@@ -8,11 +8,9 @@ function RatingBox({rate}) {
         let rating= 0
         let date = ''
         for (let i=0; i < elements.length; i++) {
-       console.log('before loop', elements[i].rate_happiness + elements[i].rate_focus + elements[i].rate_energy)
        if( (elements[i].rate_happiness + elements[i].rate_focus + elements[i].rate_energy) /3 > rating ) {
             rating = (elements[i].rate_happiness + elements[i].rate_focus + elements[i].rate_energy)/3 
             date = elements[i].date
-           console.log('after loop', rating, date)
        }     
     } 
     rating = Math.round(rating) 

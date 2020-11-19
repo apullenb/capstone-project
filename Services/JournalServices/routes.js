@@ -3,6 +3,7 @@ const express = require('express');
 const Services = require('./journal-service.js');
 const jsonParser=express.json();
 const authorization = require('../../utils/authorization')
+const jwt = require('jsonwebtoken');
 
 
 const journalRouter = express.Router();
@@ -13,7 +14,6 @@ journalRouter
       const user = await Services.getAllJournalEntries(req.app.get('db'), req.user)
      
      res.json(user)
-     console.log(user)
 
   } catch (err) {
       console.error(err.message);
@@ -22,9 +22,18 @@ journalRouter
   }
 })
 journalRouter
-  .post('/journal-entries', jsonParser, (req, res, next) =>{
+  .post('/', jsonParser, authorization, (req, res) =>{
     const {title, content, mood} = req.body;
     const newEntry = {title, content, mood};
+
+    for (const [key, value] of Object.entries(newEntry))
+      if (value == null)
+        return res.status(400).json({
+          error: `Missing '${key}' in request body`
+        })
+     console.log(req.user)
+     newEntry.user_id = req.user
+
     Services.addNewJournalEntry(req.app.get('db'),
       newEntry
     )
@@ -33,8 +42,7 @@ journalRouter
           .status(201)
           .json(entry);
       })
-      .catch(next);
-  });
+    })
 
 
 

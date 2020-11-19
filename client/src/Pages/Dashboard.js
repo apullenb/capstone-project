@@ -5,19 +5,21 @@ import AllJournalEntries from '../Journal/AllJournalEntries';
 import { Row, Col } from 'react-simple-flex-grid';
 import "react-simple-flex-grid/lib/main.css";
 import RatingBox from '../Page Components/RatingBox';
-const Dashboard = ({setAuth}) => {
-    const [name, setName] = useState('')
+import Entry from '../DailyLog/Entry'
 
-   async function getName() {
+
+const Dashboard = ({setAuth}) => {
+   
+    const [name, setName] = useState('')    
+ 
+async function getName() {
         try {
             const response = await fetch('http://localhost:8000/dashboard', {
                 method: 'GET',
                 headers: {token: localStorage.token}
             })
             const parseRes = await response.json()
-
            setName(parseRes.username)
-
         } catch (error) {
             console.error(error.message)
         }
@@ -27,20 +29,22 @@ const Dashboard = ({setAuth}) => {
         e.preventDefault()
         localStorage.removeItem('token');
         setAuth(false)
-        toast.success('Logged Out Successfully')
     }
     useEffect(() => {
-        getName()
-    }, []);
-
+        getName();
+    },[]);
+    
     
     return(
-        <Fragment>
-            <button onClick= {e => logout(e)}>Logout</button>
-            <h3>Dashboard </h3>
-                <h1>Hello {name}</h1>
+        <Fragment>            
+            <Row gutter={1}>
+                     <Col span={1}></Col>
+                     <Col span={3}><h3>Dashboard </h3></Col> 
+                     <Col span={5}><h2>Hello {name}!</h2></Col>
+                     <Col span={2}> <button onClick= {e => logout(e)}>Logout</button></Col>
+                </Row>
                 <Row gutter={2}>
-                     <Col span={6}><AllEntryView /></Col>
+                    <Col span={6}><AllEntryView /></Col>
                      <Col span={6}><AllJournalEntries /></Col>
                      <Col span={6}></Col>
                 </Row>

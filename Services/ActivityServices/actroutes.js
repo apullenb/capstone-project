@@ -31,8 +31,6 @@ actRouter
       const user = await Services.getById(req.app.get('db'), req.user)
      
      res.json(user)
-     console.log(user)
-
   } catch (err) {
       console.error(err.message);
       res.status(500).json('server error');
@@ -41,8 +39,7 @@ actRouter
 })
   
 actRouter
-  .route('/')
-  .post(jsonParser, (req, res, next) => {
+  .post('/', jsonParser, authorization, (req, res) => {
     const {medicine, hours_slept, food, sugar_intake, rate_focus, rate_happiness, rate_energy} = req.body;
     const newEntry = {medicine, hours_slept, food, sugar_intake, rate_focus, rate_happiness, rate_energy};
     
@@ -52,8 +49,8 @@ actRouter
           error: `Missing '${key}' in request body`
         })
      
-    newEntry.user_id = req.user.id  
-
+    newEntry.user_id = req.user  
+    console.log(req.user)
     Services.addNewActEntry(
       req.app.get('db'),
       newEntry
@@ -64,8 +61,7 @@ actRouter
           .location(path.posix.join(req.originalUrl, `/${entry.id}`))
           .json(entry)
       })
-      .catch(next)
-  })
+    })
 
 actRouter
   .route('/:user_id')

@@ -4,8 +4,7 @@ import {toast} from 'react-toastify';
 
 
 
-function LoginForm(props) {
-  
+function LoginForm({setAuth}) {
   
   const [formHandleUser, setformHandleUser] = useState('')
   const [formHandlePass, setformHandlePass] = useState('')
@@ -20,10 +19,9 @@ function LoginForm(props) {
     const parseRes = await response.json()
     if (parseRes.token) {
       localStorage.setItem('token', parseRes.token)
-    props.setAuth(true) 
-    toast.success('Logged In Successfully') 
+    setAuth(true) 
   } else {
-    props.setAuth(false)
+    setAuth(false)
     toast.error(parseRes.error)
   }
   }

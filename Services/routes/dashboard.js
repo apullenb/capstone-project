@@ -10,7 +10,6 @@ router
         const user = await service.getUserDash(req.app.get('db'), req.user)
        
        res.json(user)
-       console.log(user)
 
     } catch (err) {
         console.error(err.message);

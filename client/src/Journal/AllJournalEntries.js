@@ -7,9 +7,11 @@ class AllJournalEntries extends Component {
               super(props)
                 this.state = {
                   Journal: []
-                }
+                } 
               }
+              
     componentDidMount() {
+      
       fetch('http://localhost:8000/api/journal',{ method: 'GET',
       headers: {token: localStorage.token}
     })

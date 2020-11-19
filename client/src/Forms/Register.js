@@ -25,10 +25,8 @@ function Register (props) {
             if (parseRes.token) {
             localStorage.setItem('token', parseRes.token)
             props.setAuth(true)
-            toast.success('Success! Logging into your new account..')
             } else {
                 props.setAuth(false)
-                console.log(parseRes)
                 toast.error(parseRes.error)
             }
         }catch (err) {

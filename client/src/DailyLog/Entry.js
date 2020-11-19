@@ -4,7 +4,6 @@ import moment from "moment";
 
 
 function Entry({log}) {
-    console.log(log)
     const entry= log
     const date = moment(entry.date).format("LL")
     return (

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import RatingBox from '../Page Components/RatingBox'
-import LogEntry from './LogEntry'
+import Entry from './Entry'
 
 
 class AllEntryView extends Component {
@@ -28,8 +28,8 @@ class AllEntryView extends Component {
       return (
         <div className="dailylog-entries">
           <RatingBox rate={this.state.dailyLog} />
-          {this.state.dailyLog.map((entry) => { 
-        return <div key={entry.id}><LogEntry log= {entry} /></div>})}
+          {this.state.dailyLog.map((entry) => {
+            return <div key={entry.id}><Entry log= {entry}/></div>})}
         
       </div>
       )
