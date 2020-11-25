@@ -2,8 +2,9 @@ import React from 'react';
 import moment from 'moment'
 
 
-function RatingBox({rate}) {
-    const elements= rate
+function RatingBox(props) {
+  console.log('rating box', props)
+    const elements= props.rate
     function bestRating() {
         let rating= 0
         let date = ''
@@ -19,19 +20,23 @@ function RatingBox({rate}) {
 }
     const string = bestRating()
     return (
-      <div style = {ratingBoxStyle} className="Rating-Box">
+      <div 
+      style = {ratingBoxStyle} className="Rating-Box"
+      >
           {string}
       </div>
     );
   }
   
   const ratingBoxStyle = {
-    backgroundColor: "yellow",
-    padding: "10px",
+    backgroundColor: "#01b8d8",
+    padding: "15px",
     textAlign: "center",
     maxWidth: "60%",
-    boxShadow: "0px 13px 10px black",
-    transform: "rotate(-3deg)"
+    boxShadow: "0px 3px 3px black",
+    marginLeft:'15px',
+   
+    
   }
   
 

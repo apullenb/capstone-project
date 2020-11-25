@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+
 
 
 
@@ -16,7 +16,7 @@ const footerStyle = {
   border: "1px solid black",
   textAlign : "left",
   backgroundColor: "gray",
-  marginTop: "45px",
+  marginTop: "2px",
   padding: "20px"
 }
 

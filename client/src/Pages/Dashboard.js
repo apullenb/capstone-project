@@ -6,10 +6,10 @@ import { Row, Col } from 'react-simple-flex-grid';
 import "react-simple-flex-grid/lib/main.css";
 import RatingBox from '../Page Components/RatingBox';
 import Entry from '../DailyLog/Entry'
+import './Dashboard.css'
 
-
-const Dashboard = ({setAuth}) => {
-   
+const Dashboard = (props) => {
+   console.log(props)
     const [name, setName] = useState('')    
  
 async function getName() {
@@ -28,7 +28,7 @@ async function getName() {
     const logout = e => {
         e.preventDefault()
         localStorage.removeItem('token');
-        setAuth(false)
+        props.setAuth(false)
     }
     useEffect(() => {
         getName();
@@ -36,19 +36,18 @@ async function getName() {
     
     
     return(
-        <Fragment>            
-            <Row gutter={1}>
+        <div className='all'>            
+            <Row className='headline row'gutter={1}>
                      <Col span={1}></Col>
                      <Col span={3}><h3>Dashboard </h3></Col> 
                      <Col span={5}><h2>Hello {name}!</h2></Col>
                      <Col span={2}> <button onClick= {e => logout(e)}>Logout</button></Col>
                 </Row>
-                <Row gutter={2}>
-                    <Col span={6}><AllEntryView /></Col>
-                     <Col span={6}><AllJournalEntries /></Col>
-                     <Col span={6}></Col>
+                <Row className= "row" gutter={0}>
+                    <Col className='col' span={6}><AllEntryView /></Col>
+                     <Col className='col' span={6}><AllJournalEntries /></Col>
                 </Row>
-        </Fragment>
+        </div>
     )
 }
 

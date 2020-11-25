@@ -7,12 +7,19 @@ import LoginForm from './Forms/LoginForm';
 import NewJournalEntry from './Journal/NewJournalEntry';
 import AllJournalEntries from './Journal/AllJournalEntries';
 import AllEntryView from './DailyLog/AllEntryView';
-import useLocalStorage from 'react-use-localstorage'
+import useLocalStorage from 'react-use-localstorage';
 import Dashboard from './Pages/Dashboard';
 import Register from './Forms/Register';
-import LogNewEntry from './DailyLog/LogNewEntry'
+import LogNewEntry from './DailyLog/LogNewEntry';
+import ViewEntry from './Journal/ViewEntry';
+import ViewActivity from './DailyLog/ViewEntry';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheckSquare, faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
+import RatingBox from './Page Components/RatingBox'
 
+import './App.css'
 
+library.add(faCheckSquare, faCoffee, faStar)
 
  
 const App = () => {
@@ -47,7 +54,7 @@ const App = () => {
       
       <Router>
     <div className="App">
-    <Header />
+    <Header setAuth={setAuth} isAuth={isAuthenticated}/>
     
     <Switch>
       <Route exact path='/login' render= {props =>
@@ -59,8 +66,8 @@ const App = () => {
       </Switch>
        <Route path='/alljournalentries' render = {props =>
        isAuthenticated ? ( <AllJournalEntries {...props} setAuth={setAuth} />) : ( <Redirect to='/login' /> )} />
-      
-      
+      <Route path='/journal/:journalId' component={ViewEntry} />
+      <Route path='/activities/:activityId' component={ViewActivity} />
         <Route path= '/AllEntryView' component= {AllEntryView} />
         <Route
                path='/NewJournalEntry' component= {NewJournalEntry}/>

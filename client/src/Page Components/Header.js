@@ -3,14 +3,14 @@ import './Header.css';
 import Navbar from './Navbar';
 
 
-function Header() {
+function Header(props) {
 
 
 return(
        
     <div className="header">
       <h1>Mindful</h1>
-      <Navbar />
+      <p><Navbar setAuth={props.setAuth}/></p>
     </div>
   );
 
