@@ -33,9 +33,10 @@ class AllEntryView extends Component {
     const log = this.state
       return (
         <div className="dailylog-entries">
-          <RatingBox rate={this.state.dailyLog} />
-          <h2>Your Daily Activity Log</h2>
+          <span style={{textAlign:'center'}}><h3>Your Daily Activity Entries</h3></span>
+       
           <h3>{this.state.text}</h3>
+          <RatingBox rate={this.state.dailyLog} />
           {this.state.dailyLog.map((entry) => { 
           return   <div style={cardStyle} key={entry.id}><Entry log= {entry}/></div>})}
             <Link to = {{pathname: '/lognewentry', state: log}}> <button style={{marginLeft:'20%', marginRight:'20%', marginBottom:'5%', marginTop:'8%'}}>Record New Daily Entry</button></Link>

@@ -37,15 +37,18 @@ async function getName() {
     
     return(
         <div className='all'>            
-            <Row className='headline row'gutter={1}>
-                     <Col span={1}></Col>
-                     <Col span={3}><h3>Dashboard </h3></Col> 
-                     <Col span={5}><h2>Hello {name}!</h2></Col>
-                     <Col span={2}> <button onClick= {e => logout(e)}>Logout</button></Col>
+            <Row className='headline row' flexGrow={1} >
+                     <Col span= {4}><h2>Dashboard </h2></Col> 
+                     <Col span= {5}><h2>Hello {name}!</h2></Col>
+                     <Col span= {2}> <button onClick= {e => logout(e)}>Logout</button></Col>
+                     <Col span= {1}></Col>
                 </Row>
                 <Row className= "row" gutter={0}>
-                    <Col className='col' span={6}><AllEntryView /></Col>
-                     <Col className='col' span={6}><AllJournalEntries /></Col>
+                    <Col className='col1' span= {6}><AllEntryView /></Col>
+                    <Col span= {1}></Col>
+                    <Col className='col'span= {5}>
+                        <h3 style={{textAlign:'center', borderBottom:'2px dashed white', paddingBottom:'5px'}}>Your Journal</h3>
+                        <AllJournalEntries /></Col>
                 </Row>
         </div>
     )

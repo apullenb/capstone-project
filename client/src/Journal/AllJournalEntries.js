@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import Entry from './Entry'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 
 class AllJournalEntries extends Component {
@@ -32,8 +34,7 @@ class AllJournalEntries extends Component {
      
     return (
       <div className="journal-entries">
-        <h2>Your Journal Entries</h2>
-        <Link to = {{pathname: '/NewJournalEntry', state: this.state.journal}}> <button style={{marginLeft:'20%'}}>Add New Journal Entry</button></Link>
+        <Link to = {{pathname: '/NewJournalEntry', state: this.state.journal}}> <button style={{marginLeft:'20%'}}><FontAwesomeIcon icon="plus" style={{color: ''}} /> {''}Add New Journal Entry</button></Link>
         <h3>{this.state.text}</h3>
           { this.state.Journal.map((entry) => { 
       return <div style= {cardStyle} key= {entry.id}> <Entry journal={entry}/> </div>}
@@ -46,8 +47,10 @@ class AllJournalEntries extends Component {
     }
 }
 const cardStyle = {
-  // display:'flex',
-  // flexDirection:'column',
-  //  margin: '2%'
+  backgroundColor:'#01b8d8',
+  marginLeft:'18px',
+  paddingLeft:'5px',
+  paddingRight:'5px',
+  paddingTop:'0px',
 }
   export default AllJournalEntries;

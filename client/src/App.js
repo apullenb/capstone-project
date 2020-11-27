@@ -14,12 +14,12 @@ import LogNewEntry from './DailyLog/LogNewEntry';
 import ViewEntry from './Journal/ViewEntry';
 import ViewActivity from './DailyLog/ViewEntry';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheckSquare, faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
 import RatingBox from './Page Components/RatingBox'
 
 import './App.css'
 
-library.add(faCheckSquare, faCoffee, faStar)
+library.add(faPlus, faCoffee, faStar)
 
  
 const App = () => {

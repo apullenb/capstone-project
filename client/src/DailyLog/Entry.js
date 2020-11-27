@@ -9,9 +9,7 @@ function Entry(props) {
     const date = moment(entry.date).format("LL")
    
     return (
-        <div 
-        style = {entryStyle}
-        > 
+        <div  style = {entryStyle}  > 
         <h4>Date: {date}</h4>
                <h4>Mood on This Day</h4>
                    <p>Happiness: {entry.rate_happiness}</p>
@@ -34,6 +32,6 @@ const entryStyle={
     textAlign: "center",
     boxShadow: "0px 5px 3px black",
     margin: "3px",
-    transform: "rotate(-1deg)"
+    // transform: "rotate(-1deg)"
 }
 export default Entry;
