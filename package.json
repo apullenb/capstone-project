@@ -10,7 +10,7 @@
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:production": "env SSL=true DATABASE_URL=$(heroku config:get DATABASE_URL) heroku run npm run migrate",
     "predeploy": "npm audit && npm run migrate:production",
-    "deploy": "git push heroku main",
+    "deploy": "git push heroku master",
     "postdeploy": "npm run migrate:production"
   },
   "repository": {
