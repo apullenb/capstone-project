@@ -8,7 +8,6 @@ const jwtGenerator = require('../../utils/jwtGenerator');
 const jsonParser = express.json();
 const userRouter = express.Router();
 const authorization = require('../../utils/authorization')
-const cors = require('cors');
 
 
 const serializeUser = user => ({
@@ -18,7 +17,7 @@ const serializeUser = user => ({
 });
 
 //user registration
-app.use(cors());
+
 
 userRouter
   .post('/register', async (req, res) => {
