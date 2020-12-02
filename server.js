@@ -3,8 +3,8 @@
 const app = require('./app')
 const knex = require('knex');
 const cors = require('cors')
-const { PORT, DATABASE_URL } = require('./config')
-
+const { DATABASE_URL } = require('./config')
+const PORT = process.env.PORT
 app.use(cors())
 
 const db = knex({
