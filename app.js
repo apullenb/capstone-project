@@ -18,13 +18,15 @@ const morganOption = (NODE_ENV === 'production')
 
 app.use(morgan(morganOption));
 app.use(helmet());
-app.use(cors());
+
 
 
 
 // app.use(validateBearerToken);
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use('/dashboard', require('./Services/routes/dashboard'));
 app.use('/api/activity', actRouter);
