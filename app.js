@@ -17,8 +17,10 @@ const morganOption = (NODE_ENV === 'production')
   : 'common';
 
 app.use(morgan(morganOption));
-app.use(cors());
 app.use(helmet());
+app.use(cors());
+
+
 
 // app.use(validateBearerToken);
 
