@@ -20,8 +20,8 @@ const serializeUser = user => ({
 
 
 userRouter
-  .post('/register', async (req, res) => {
-    try{
+  .post('/register', jsonParser, async (req, res, next) => {
+    
       const { username, password} = req.body;
       const newUser = {username, password};
       const users = await Services.checkForUser(req.app.get('db'), newUser.username)
@@ -35,11 +35,8 @@ userRouter
 
     const addUser = await Services.insertUser(req.app.get('db'), newUser.username, bcryptPassword); 
     const token =  jwtGenerator(addUser[0].user_id)
-         res.json({token})    
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('server error');
-    }
+         res.json({token})     
+    .catch(next);
   });
 
  
