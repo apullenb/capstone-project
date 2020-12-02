@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 const jwtGenerator = require('../../utils/jwtGenerator');
 const jsonParser = express.json();
 const userRouter = express.Router();
-const authorization = require('../../utils/authorization')
+const authorization = require('../../utils/authorization');
 
 
 const serializeUser = user => ({

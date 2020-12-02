@@ -26,7 +26,7 @@ app.use(helmet());
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({origin:process.env.ORIGIN}));
 
 app.use('/dashboard', require('./Services/routes/dashboard'));
 app.use('/api/activity', actRouter);

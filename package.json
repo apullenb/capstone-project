@@ -13,8 +13,7 @@
     "deploy": "git push heroku master",
     "postdeploy": "npm run migrate:production"
   },
-  
-  "proxy": "http://localhost:3000",
+
 
   "keywords": [],
    "engines": {
