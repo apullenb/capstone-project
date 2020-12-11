@@ -11,10 +11,11 @@ const journalRouter = express.Router();
 journalRouter
 .get('/', authorization, async (req, res) => { 
   try {
+    
       const user = await Services.getAllJournalEntries(req.app.get('db'), req.user)
      
      res.json(user)
-
+   
   } catch (err) {
       console.error(err.message);
       res.status(500).json('server error');
@@ -31,7 +32,7 @@ journalRouter
         return res.status(400).json({
           error: `Missing '${key}' in request body`
         })
-     console.log(req.user)
+    
      newEntry.user_id = req.user
 
     Services.addNewJournalEntry(req.app.get('db'),

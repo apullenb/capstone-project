@@ -50,7 +50,6 @@ actRouter
         })
      
     newEntry.user_id = req.user  
-    console.log(req.user)
     Services.addNewActEntry(
       req.app.get('db'),
       newEntry
