@@ -44,9 +44,9 @@ actRouter
     const newEntry = {medicine, hours_slept, food, sugar_intake, rate_focus, rate_happiness, rate_energy};
     
     for (const [key, value] of Object.entries(newEntry))
-      if (value == null)
+      if (value === null || undefined || '')
         return res.status(400).json({
-          error: `Missing '${key}' in request body`
+          error: `Missing Value for '${key}' `
         })
      
     newEntry.user_id = req.user  
