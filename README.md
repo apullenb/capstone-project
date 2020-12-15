@@ -13,9 +13,9 @@ As you add new entries each day, your days with the highest mood score will be d
 #### Journaling
 Journaling has been shown to have a positive effect on overall mental health. Use the journal section to record your thoughts and just vent.
 
-#### Demo Account
-Username: Test1 
-Password: 12345
+> #### Demo Account
+>> Username: Test1 <br>
+>> Password: 12345
 
 
 ## API Documentation:
