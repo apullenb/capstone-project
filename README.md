@@ -21,7 +21,7 @@ Password: 12345
 ## API Documentation:
 ### GET /api/activity 
 Retrieves all of the user's daily activity logs. Returns a response like the following:
-{
+***
         "id": 16,
         "date": "2020-12-13T16:59:21.141Z",
         "medicine": "tylenol",
@@ -32,8 +32,26 @@ Retrieves all of the user's daily activity logs. Returns a response like the fol
         "rate_happiness": 2,
         "rate_energy": 4,
         "user_id": 3
-}    
-
+ ***  
+### POST /api/activity 
+ In order to post successfully, a user must be logged in. This POST method will retrieve your user information and authentication status before attempting to post. 
+ See the example below:
+*** 
+{
+      method: "POST",
+      headers: { "content-type": "application/json", token: `${token}` },
+      body: { 
+        "medicine": "tylenol",
+        "hours_slept": 3
+        "food": "waffles",
+        "sugar_intake": 3,
+        "rate_focus": 5,
+        "rate_happiness": 2,
+        "rate_energy": 4,
+       }
+}
+***
+***
 ## Technology info:
 ### Backend: 
 <ul>
