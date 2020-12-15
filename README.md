@@ -37,7 +37,8 @@ Retrieves all of the user's daily activity logs. Returns a response like the fol
  In order to post successfully, a user must be logged in. This POST method will retrieve your user information and authentication status before attempting to post. 
  See the example below:
 *** 
-{
+[
+
       method: "POST",
       headers: { "content-type": "application/json", token: `${token}` },
       body: { 
@@ -49,7 +50,8 @@ Retrieves all of the user's daily activity logs. Returns a response like the fol
         "rate_happiness": 2,
         "rate_energy": 4,
        }
-}
+
+]
 ***
 ***
 ## Technology info:
