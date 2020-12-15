@@ -143,7 +143,7 @@ describe('Journal API:', function () {
         .send(user)
         .expect(200)
         .expect(res => {
-          expect(res.body).to.be.a('object')
+          expect(res.body).to.be.a('object');
         });
     });
   });
@@ -162,6 +162,41 @@ describe('Journal API:', function () {
   });
 
   
+  describe('POST /api/activity', function () {
 
+    it('should create and return a new entries when provided valid data', function () {
+      const newItem = {
+        id: 15,
+        medicine: 'tylonol',
+        food: 'waffles',
+        mood: 'happy',
+        sleep: 5,
+        energy: 4,
+        focus: 3
+      };
+      
+      return supertest(app)
+        .post('/api/activity')
+        .send(newItem)
+        .expect(201)
+        .expect(res => {
+          expect(res.body).to.be.a('object');
+          expect(res.body).to.include.keys('id', 'medicine', 'food', 'mood', 'sleep', 'energy', 'focus');
+          expect(res.body.title).to.equal(newItem.title);
+          expect(res.headers.location).to.equal(`/api/activity/${res.body.id}`);
+        });
+    });
+
+    it('should respond with 400 status when given bad data', function () {
+      const badItem = {
+        foobar: 'broken item'
+      };
+      return supertest(app)
+        .post('/api/activity')
+        .send(badItem)
+        .expect(400);
+    });
+
+  });
 
 });
