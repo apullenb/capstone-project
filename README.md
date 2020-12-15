@@ -18,6 +18,10 @@ Journaling has been shown to have a positive effect on overall mental health. Us
 Username: Test1 
 Password: 12345
 
+
+## API Documentation:
+
+
 ## Technology info:
 ### Backend: 
 <ul>
