@@ -13,11 +13,11 @@ At the end of each day, rate your energy level, happiness, & focus to calculate 
 As you add new entries each day, your days with the highest mood score will be displayed so you can identify which habits impact your mood the most.
 #### Journaling
 Journaling has been shown to have a positive effect on overall mental health. Use the journal section to record your thoughts and just vent.
-<br>
+
 #### Demo Account
 Username: Test1 
 Password: 12345
-<br>
+
 ## Technology info:
 ### Backend: 
 <ul>
@@ -28,7 +28,7 @@ Password: 12345
 <li>Mocha, Chai, Supertest for testing</li>
 <li>JSON Web Token and bcryptjs for user authentication / authorization</li>
 </ul>
-<br>
+
 ### Front End:
 <ul>
 <li>React</li>
