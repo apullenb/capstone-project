@@ -37,18 +37,19 @@ Retrieves all of the user's daily activity logs. Returns a response like the fol
 
 ## Technology info:
 ### Backend: 
-
-*Node for interacting with the file system 
-*Express for handling API requests
-*Knex.js for interfacing with the PostgreSQL database
-*Postgrator for database migration
-*Mocha, Chai, Supertest for testing
-*JSON Web Token and bcryptjs for user authentication / authorization
-
+<ul>
+<li>Node for interacting with the file system</li> 
+<li>Express for handling API requests</li> 
+<li>Knex.js for interfacing with the PostgreSQL database</li> 
+<li>Postgrator for database migration</li> 
+<li>Mocha, Chai, Supertest for testing</li> 
+<li>JSON Web Token and bcryptjs for user authentication / authorization</li> 
+</ul>
 
 ### Front End:
-*React
-*HTML5
-*CSS3
-*Jest/Enzyme
-
+<ul>
+<li>React</li> 
+<li>HTML5</li> 
+<li>CSS3</li> 
+<li>Jest/Enzyme</li> 
+</ul>
