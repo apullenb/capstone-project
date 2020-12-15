@@ -19,9 +19,9 @@ Password: 12345
 
 
 ## API Documentation:
-> ### <em> GET /api/activity </em>
+> ### GET /api/activity 
 Retrieves all of the user's daily activity logs. Returns a response like the following:
-<br>
+
  {
         "id": 16,
         "date": "2020-12-13T16:59:21.141Z",
@@ -34,22 +34,21 @@ Retrieves all of the user's daily activity logs. Returns a response like the fol
         "rate_energy": 4,
         "user_id": 3
     }
-<br>
+
 ## Technology info:
 ### Backend: 
-<ul>
-<li>Node for interacting with the file system </li>
-<li>Express for handling API requests</li>
-<li>Knex.js for interfacing with the PostgreSQL database</li>
-<li>Postgrator for database migration</li>
-<li>Mocha, Chai, Supertest for testing</li>
-<li>JSON Web Token and bcryptjs for user authentication / authorization</li>
-</ul>
+
+*Node for interacting with the file system 
+*Express for handling API requests
+*Knex.js for interfacing with the PostgreSQL database
+*Postgrator for database migration
+*Mocha, Chai, Supertest for testing
+*JSON Web Token and bcryptjs for user authentication / authorization
+
 
 ### Front End:
-<ul>
-<li>React</li>
-<li>HTML5</li>
-<li>CSS3</li>
-<li>Jest/Enzyme</li>
-</ul>
+*React
+*HTML5
+*CSS3
+*Jest/Enzyme
+
