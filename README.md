@@ -20,8 +20,22 @@ Password: 12345
 
 
 ## API Documentation:
-
-
+### <em> GET /api/activity </em>
+Retrieves all of the user's daily activity logs. Returns a response like the following:
+<br>
+ {
+        "id": 16,
+        "date": "2020-12-13T16:59:21.141Z",
+        "medicine": "tylenol",
+        "hours_slept": 3,
+        "food": "waffles",
+        "sugar_intake": 3,
+        "rate_focus": 5,
+        "rate_happiness": 2,
+        "rate_energy": 4,
+        "user_id": 3
+    }
+<br>
 ## Technology info:
 ### Backend: 
 <ul>
