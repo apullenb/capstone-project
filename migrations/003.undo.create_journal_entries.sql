@@ -1,2 +1,2 @@
-DROP TABLE IF NOT EXISTS Journal_Entry
+DROP TABLE IF EXISTS Journal_Entry
 
