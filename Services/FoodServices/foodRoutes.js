@@ -32,7 +32,7 @@ foodRouter
     )
       .then(entry => {
         res
-          .status(201)
+          .status(201).json()
       })
     })
 
