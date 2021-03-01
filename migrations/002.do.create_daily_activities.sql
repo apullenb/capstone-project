@@ -4,7 +4,6 @@ CREATE TABLE IF NOT EXISTS Daily_Activities
  date           TIMESTAMPTZ DEFAULT now() NOT NULL,
  medicine       text NOT NULL,
  hours_slept    integer NOT NULL,
- food           text NOT NULL,
  sugar_intake   integer NOT NULL,
  rate_focus     integer NOT NULL,
  rate_happiness integer NOT NULL,

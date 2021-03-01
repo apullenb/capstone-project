@@ -9,6 +9,7 @@ const { NODE_ENV } = require('./config');
 const userRouter = require('./Services/Users/userRoutes');
 const actRouter = require('./Services/ActivityServices/actroutes');
 const journalRouter = require('./Services/JournalServices/routes');
+const foodRouter = require('./Services/FoodServices/foodRoutes');
 const app = express();
 
 
@@ -32,6 +33,7 @@ app.use('/dashboard', require('./Services/routes/dashboard'));
 app.use('/api/activity', actRouter);
 app.use('/api/users', userRouter);
 app.use('/api/journal', journalRouter);
+app.use('/api/food', foodRouter);
 
 app.use((error, req, res, next) => {
   let response;
