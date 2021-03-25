@@ -40,8 +40,8 @@ actRouter
   
 actRouter
   .post('/', jsonParser, authorization, (req, res) => {
-    const {medicine, hours_slept, food, sugar_intake, rate_focus, rate_happiness, rate_energy} = req.body;
-    const newEntry = {medicine, hours_slept, food, sugar_intake, rate_focus, rate_happiness, rate_energy};
+    const {medicine, hours_slept, sugar_intake, rate_focus, rate_happiness, rate_energy} = req.body;
+    const newEntry = {medicine, hours_slept, sugar_intake, rate_focus, rate_happiness, rate_energy};
     
     for (const [key, value] of Object.entries(newEntry))
       if (value === null || undefined || '')
